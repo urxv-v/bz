@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blazecore IoT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: '#0071E3',
+            },
+            fontFamily: {
+              sans: ['-apple-system', 'SF Pro Text', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+        <div id="root"></div>
+    </main>
+    <script type="module" src="./bundle.js"></script>
+  </body>
+</html>

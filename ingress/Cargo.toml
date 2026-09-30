@@ -1,0 +1,23 @@
+[package]
+name = "ingress"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rust-embed = "8.7.0"
+mime_guess = "2.0.5"
+actix-web = "4.5.1"
+actix-ws = "0.3.0"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-native-roots"] }
+tokio = { version = "1.35.0", features = ["macros", "rt-multi-thread"] }
+futures-util = "0.3"
+actix-cors = "0.7.0"
+dotenv = "0.15.0"
+
+# Experiments service
+actix = { path = "../nanoservices/experiments/actix" }
+experiment-dal = { path ="../nanoservices/experiments/dal", package = "dal", features = ["sqlx-postgres"] }
+
+auth_actix_server = { path = "../nanoservices/auth/actix/", package = "auth_actix_server" }
+auth-dal = { path = "../nanoservices/auth/dal", package = "auth-dal" }

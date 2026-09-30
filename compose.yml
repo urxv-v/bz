@@ -1,0 +1,117 @@
+services:
+  postgres:
+    image: docker.io/timescale/timescaledb:latest-pg16
+    container_name: blazecore-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-blazecore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-blazecore}
+    ports:
+      - "5432:5432"
+    volumes:
+      - blazecore_pgdata:/var/lib/postgresql/data
+    networks:
+      - blazecore
+
+  broker:
+    image: docker.io/eclipse-mosquitto:2
+    container_name: blazecore-broker
+    restart: unless-stopped
+    command: mosquitto -c /mosquitto-no-auth.conf
+
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - blazecore
+
+  auth:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: localhost/blazecore-auth:prod
+    container_name: blazecore-auth
+    restart: unless-stopped
+    entrypoint: ["/usr/local/bin/auth_actix_server"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-blazecore}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-blazecore}
+      JWT_SECRET: ${JWT_SECRET:-blazecore_secret_key_12345}
+      AUTH_MAX_CONNECTIONS: "5"
+      RUST_LOG: info
+    depends_on:
+      postgres:
+        condition: service_started
+    ports:
+      - "8081:8081"
+    networks:
+      - blazecore
+
+  experiments:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: localhost/blazecore-experiments:prod
+    container_name: blazecore-experiments
+    restart: unless-stopped
+    entrypoint: ["/usr/local/bin/actix"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-blazecore}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-blazecore}
+      JWT_SECRET: ${JWT_SECRET:-blazecore_secret_key_12345}
+      EXPERIMENTS_POOL_SIZE: "5"
+      MQTT_BROKER_URL: mqtt://broker:1883
+      MQTT_CLIENT_ID: blazecore-experiments
+      MQTT_TOPIC_PREFIX: daq
+      MQTT_QOS: "1"
+      MQTT_RECONNECT_DELAY_MS: "500"
+      MQTT_MAX_RECONNECT_DELAY_MS: "30000"
+      RUST_LOG: info
+    depends_on:
+      postgres:
+        condition: service_started
+      broker:
+        condition: service_started
+    ports:
+      - "8080:8080"
+    networks:
+      - blazecore
+
+  ingress:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: localhost/blazecore-ingress:prod
+    container_name: blazecore-ingress
+    restart: unless-stopped
+    entrypoint: ["/usr/local/bin/ingress"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-blazecore}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-blazecore}
+      JWT_SECRET: ${JWT_SECRET:-blazecore_secret_key_12345}
+      HOST: 0.0.0.0
+      PORT: "8001"
+      AUTH_MAX_CONNECTIONS: "5"
+      EXPERIMENTS_POOL_SIZE: "5"
+      EXPERIMENTS_SERVICE_URL: http://experiments:8080
+    depends_on:
+      postgres:
+        condition: service_started
+      auth:
+        condition: service_started
+      experiments:
+        condition: service_started
+    ports:
+      - "8001:8001"
+    networks:
+      - blazecore
+
+volumes:
+  blazecore_pgdata:
+
+networks:
+  blazecore:
+    name: blazecore-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16 
+

@@ -1,0 +1,9 @@
+[package]
+name = "coremod"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde = { version = "1.0.197", features = ["derive"] }
+dal = { path = "../dal" }
+glue = { path = "../../../glue"}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blazecore - Open Source for Open Minds</title>
+    <style>
+        /* Base reset and theme initialization */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        #root {
+            min-height: 100vh;
+        }
+        
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-size: 18px;
+            color: #64748B;
+        }
+        
+        /* Dark theme support */
+        [data-theme="dark"] body {
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+    </style>
+</head>
+<body> 
+	<div id="root">
+		<div class="loading">Loading Blazecore...</div>
+	</div>
+	<script type="module" src="./frontend/public/bundle.js"></script>
+</body>
+</html>

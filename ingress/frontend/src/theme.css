@@ -1,0 +1,419 @@
+/* ── macOS HIG Design System ─────────────────────────────────────────────────── */
+
+/* ── Entity Token Cascade ────────────────────────────────────────────────────── */
+/* Default entity accent (blue). Overridden via JS when an entity is selected.   */
+:root {
+  --entity-accent:        #0071E3;
+  --entity-accent-rgb:    0, 113, 227;
+  --entity-accent-light:  rgba(0, 113, 227, 0.10);
+  --entity-accent-muted:  rgba(0, 113, 227, 0.08);
+  --entity-gradient:      linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
+}
+
+/* FI (Foundation Institute) — deep crimson */
+[data-entity="fi"] {
+  --entity-accent:        #C0392B;
+  --entity-accent-rgb:    192, 57, 43;
+  --entity-accent-light:  rgba(192, 57, 43, 0.10);
+  --entity-accent-muted:  rgba(192, 57, 43, 0.08);
+  --entity-gradient:      linear-gradient(135deg, #9B1C1C 0%, #C0392B 100%);
+}
+
+/* Aragon Research Institute — royal blue */
+[data-entity="aragon"] {
+  --entity-accent:        #1A56DB;
+  --entity-accent-rgb:    26, 86, 219;
+  --entity-accent-light:  rgba(26, 86, 219, 0.10);
+  --entity-accent-muted:  rgba(26, 86, 219, 0.08);
+  --entity-gradient:      linear-gradient(135deg, #1A56DB 0%, #3B82F6 100%);
+}
+
+/* ── macOS HIG Design System ─────────────────────────────────────────────────── */
+
+/* ── Light Mode ─────────────────────────────────────────────────────────────── */
+:root {
+  --macos-bg-primary: #FFFFFF;
+  --macos-bg-secondary: #F5F5F7;
+  --macos-bg-tertiary: #E8E8ED;
+  --macos-bg-elevated: #FFFFFF;
+
+  --macos-text-primary: #1D1D1F;
+  --macos-text-secondary: #86868B;
+  --macos-text-tertiary: #A1A1A6;
+  --macos-text-inverse: #FFFFFF;
+
+  --macos-border-light: rgba(0, 0, 0, 0.08);
+  --macos-border-medium: rgba(0, 0, 0, 0.12);
+  --macos-border-focus: #0071E3;
+
+  --macos-accent-blue: #0071E3;
+  --macos-accent-blue-hover: #0068D0;
+  --macos-accent-blue-light: rgba(0, 113, 227, 0.10);
+  --macos-accent-green: #34C759;
+  --macos-accent-green-light: rgba(52, 199, 89, 0.10);
+  --macos-accent-orange: #FF9500;
+  --macos-accent-orange-light: rgba(255, 149, 0, 0.10);
+  --macos-accent-red: #FF3B30;
+  --macos-accent-red-light: rgba(255, 59, 48, 0.10);
+  --macos-accent-purple: #5856D6;
+  --macos-accent-purple-light: rgba(88, 86, 214, 0.10);
+  --macos-accent-pink: #FF2D55;
+  --macos-accent-pink-light: rgba(255, 45, 85, 0.10);
+
+  --color-background: var(--macos-bg-secondary);
+  --color-surface: var(--macos-bg-primary);
+  --color-card: var(--macos-bg-elevated);
+  --color-overlay: rgba(255, 255, 255, 0.85);
+
+  --color-text-primary: var(--macos-text-primary);
+  --color-text-secondary: var(--macos-text-secondary);
+  --color-text-tertiary: var(--macos-text-tertiary);
+  --color-text-inverse: var(--macos-text-inverse);
+
+  --color-border-primary: var(--macos-border-light);
+  --color-border-secondary: var(--macos-border-medium);
+  --color-border-focus: var(--macos-border-focus);
+  --color-accent: var(--macos-accent-blue);
+  --color-accent2: var(--macos-accent-purple);
+  --color-gold: var(--macos-accent-blue);
+
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-nav: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur: blur(20px);
+  --glass-blur-sm: blur(12px);
+
+  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
+  --gradient-secondary: linear-gradient(135deg, #34C759 0%, #30B0C7 100%);
+  --gradient-accent: linear-gradient(135deg, #0071E3 0%, #5856D6 100%);
+  --gradient-background: linear-gradient(180deg, #F5F5F7 0%, #FFFFFF 100%);
+  --gradient-hero:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 113, 227, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(88, 86, 214, 0.04) 0%, transparent 50%);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 1px 3px rgba(0, 0, 0, 0.08), 0 16px 40px rgba(0, 0, 0, 0.10);
+  --shadow-glass: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Dark Mode ──────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --macos-bg-primary: #1C1C1E;
+  --macos-bg-secondary: #111113;
+  --macos-bg-tertiary: #2C2C2E;
+  --macos-bg-elevated: #2C2C2E;
+
+  --macos-text-primary: #F5F5F7;
+  --macos-text-secondary: #98989D;
+  --macos-text-tertiary: #636366;
+  --macos-text-inverse: #000000;
+
+  --macos-border-light: rgba(255, 255, 255, 0.08);
+  --macos-border-medium: rgba(255, 255, 255, 0.12);
+  --macos-border-focus: #2997FF;
+
+  --macos-accent-blue: #2997FF;
+  --macos-accent-blue-hover: #5AC8FA;
+  --macos-accent-blue-light: rgba(41, 151, 255, 0.15);
+  --macos-accent-green: #30D158;
+  --macos-accent-green-light: rgba(48, 209, 88, 0.15);
+  --macos-accent-orange: #FF9F0A;
+  --macos-accent-orange-light: rgba(255, 159, 10, 0.15);
+  --macos-accent-red: #FF453A;
+  --macos-accent-red-light: rgba(255, 69, 58, 0.15);
+  --macos-accent-purple: #5E5CE6;
+  --macos-accent-purple-light: rgba(94, 92, 230, 0.15);
+  --macos-accent-pink: #FF375F;
+  --macos-accent-pink-light: rgba(255, 55, 95, 0.15);
+
+  --color-background: var(--macos-bg-secondary);
+  --color-surface: var(--macos-bg-primary);
+  --color-card: var(--macos-bg-elevated);
+  --color-overlay: rgba(28, 28, 30, 0.90);
+
+  --color-text-primary: var(--macos-text-primary);
+  --color-text-secondary: var(--macos-text-secondary);
+  --color-text-tertiary: var(--macos-text-tertiary);
+  --color-text-inverse: var(--macos-text-inverse);
+
+  --color-border-primary: var(--macos-border-light);
+  --color-border-secondary: var(--macos-border-medium);
+  --color-border-focus: var(--macos-border-focus);
+  --color-accent: var(--macos-accent-blue);
+  --color-accent2: var(--macos-accent-purple);
+  --color-gold: var(--macos-accent-blue);
+
+  --glass-bg: rgba(28, 28, 30, 0.72);
+  --glass-bg-nav: rgba(28, 28, 30, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --gradient-primary: linear-gradient(135deg, #2997FF 0%, #5AC8FA 100%);
+  --gradient-secondary: linear-gradient(135deg, #30D158 0%, #32ADE6 100%);
+  --gradient-accent: linear-gradient(135deg, #2997FF 0%, #5E5CE6 100%);
+  --gradient-background: linear-gradient(180deg, #111113 0%, #1C1C1E 100%);
+  --gradient-hero:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(41, 151, 255, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(94, 92, 230, 0.06) 0%, transparent 50%);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 1px 3px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.45);
+  --shadow-glass: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html { background: var(--color-background); }
+
+body {
+  margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--gradient-background);
+  min-height: 100vh;
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+h1 { font-size: 2rem;    font-weight: 700; letter-spacing: -0.025em; }
+h2 { font-size: 1.5rem;  font-weight: 600; letter-spacing: -0.02em; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+h4 { font-size: 1.125rem; font-weight: 600; }
+h5 { font-size: 1rem;    font-weight: 600; }
+h6 { font-size: 0.875rem; font-weight: 600; }
+
+#root { min-height: 100vh; }
+
+/* ── Glassmorphism Utilities ───────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-sm {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-nav {
+  background: var(--glass-bg-nav);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 60%, transparent 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+[data-theme="dark"] .glass-card::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 60%, transparent 100%);
+}
+
+/* ── Animations ────────────────────────────────────────────────────────────── */
+@keyframes fadeInUp    { from { opacity:0; transform:translateY(28px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInLeft  { from { opacity:0; transform:translateX(-24px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeInRight { from { opacity:0; transform:translateX(24px);  } to { opacity:1; transform:translateX(0); } }
+@keyframes scaleIn     { from { opacity:0; transform:scale(0.93);       } to { opacity:1; transform:scale(1);     } }
+@keyframes float    { 0%,100%{ transform:translateY(0px)  rotate(var(--r,0deg)); } 50%{ transform:translateY(-9px)  rotate(var(--r,0deg)); } }
+@keyframes floatAlt { 0%,100%{ transform:translateY(0px)  rotate(var(--r,0deg)); } 50%{ transform:translateY(-13px) rotate(var(--r,0deg)); } }
+@keyframes shimmer  { 0%{ background-position:-200% center; } 100%{ background-position:200% center; } }
+@keyframes blobMove1 { 0%,100%{ transform:translate(0,0)    scale(1); } 33%{ transform:translate(22px,-16px) scale(1.04); } 66%{ transform:translate(-12px,12px) scale(0.97); } }
+@keyframes blobMove2 { 0%,100%{ transform:translate(0,0)    scale(1); } 33%{ transform:translate(-22px,12px) scale(1.03); } 66%{ transform:translate(16px,-22px) scale(0.96); } }
+@keyframes blobMove3 { 0%,100%{ transform:translate(0,0)    scale(1); } 50%{ transform:translate(12px,16px)  scale(1.02); } }
+@keyframes spin     { from{ transform:rotate(0deg); }   to{ transform:rotate(360deg); } }
+@keyframes pulse    { 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
+@keyframes slideDown { from{ opacity:0; transform:translateY(-10px); } to{ opacity:1; transform:translateY(0); } }
+@keyframes modalIn   { from{ opacity:0; transform:scale(0.95) translateY(-8px); } to{ opacity:1; transform:scale(1) translateY(0); } }
+@keyframes grainShift { 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-1%,-1%); } }
+
+/* ── Border Trace (clockwise) — GPU composited via transform:scale ─────────── */
+@keyframes traceTop    { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes traceRight  { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes traceBottom { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes traceLeft   { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+.trace-top {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  transform: scaleX(0); transform-origin: left center;
+  animation: traceTop 0.28s cubic-bezier(0.4,0,0.2,1) forwards;
+  will-change: transform; pointer-events: none; z-index: 20;
+}
+.trace-right {
+  position: absolute; top: 0; right: 0;
+  width: 2px; height: 100%;
+  transform: scaleY(0); transform-origin: center top;
+  animation: traceRight 0.28s cubic-bezier(0.4,0,0.2,1) 0.28s forwards;
+  will-change: transform; pointer-events: none; z-index: 20;
+}
+.trace-bottom {
+  position: absolute; bottom: 0; right: 0;
+  width: 100%; height: 2px;
+  transform: scaleX(0); transform-origin: right center;
+  animation: traceBottom 0.28s cubic-bezier(0.4,0,0.2,1) 0.56s forwards;
+  will-change: transform; pointer-events: none; z-index: 20;
+}
+.trace-left {
+  position: absolute; bottom: 0; left: 0;
+  width: 2px; height: 100%;
+  transform: scaleY(0); transform-origin: center bottom;
+  animation: traceLeft 0.28s cubic-bezier(0.4,0,0.2,1) 0.84s forwards;
+  will-change: transform; pointer-events: none; z-index: 20;
+}
+
+/* ── Counter roll-up ─────────────────────────────────────────────────────── */
+@keyframes countUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.animate-count { animation: countUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Orbit rings ─────────────────────────────────────────────────────────── */
+@keyframes orbitSpin  { from { transform: rotate(0deg); }  to { transform: rotate(360deg); } }
+@keyframes orbitSpinR { from { transform: rotate(0deg); }  to { transform: rotate(-360deg); } }
+.orbit-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px dashed rgba(0, 113, 227, 0.15);
+  animation: orbitSpin 18s linear infinite;
+}
+.orbit-ring-r {
+  position: absolute; border-radius: 50%;
+  border: 1px dashed rgba(0, 113, 227, 0.10);
+  animation: orbitSpinR 24s linear infinite;
+}
+
+/* ── Glow pulse ──────────────────────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,113,227,0.0); }
+  50%       { box-shadow: 0 0 0 10px rgba(0,113,227,0.0); }
+}
+
+/* ── Scan line ──────────────────────────────────────────────────────────── */
+@keyframes scanLine {
+  0%   { top: 0%; opacity: 1; }
+  90%  { top: 100%; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,113,227,0.5), transparent);
+  animation: scanLine 3s ease-in-out infinite;
+}
+
+/* ── Animation classes ─────────────────────────────────────────────────────── */
+.animate-fade-up    { animation: fadeInUp    0.65s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-left  { animation: fadeInLeft  0.65s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-right { animation: fadeInRight 0.65s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-scale-in   { animation: scaleIn     0.55s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-float      { animation: float 5s ease-in-out infinite; }
+.animate-float-alt  { animation: floatAlt 6.5s ease-in-out infinite; }
+.animate-spin       { animation: spin 1s linear infinite; }
+.animate-pulse      { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+.animate-slide-down { animation: slideDown 0.25s ease both; }
+
+.delay-50  { animation-delay:  50ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+
+/* ── Typography ────────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.shimmer-text {
+  background: linear-gradient(90deg,
+    var(--color-text-primary) 0%, var(--color-accent) 30%,
+    var(--color-accent2) 50%, var(--color-accent) 70%,
+    var(--color-text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ── Layout Utilities ──────────────────────────────────────────────────────── */
+.min-h-screen { min-height: 100vh; }
+.w-full       { width: 100%; }
+.h-full       { height: 100%; }
+.flex         { display: flex; }
+.inline-flex  { display: inline-flex; }
+.grid         { display: grid; }
+.hidden       { display: none; }
+.relative     { position: relative; }
+.fixed        { position: fixed; }
+.absolute     { position: absolute; }
+.z-10         { z-index: 10; }
+.z-50         { z-index: 50; }
+.opacity-0    { opacity: 0; }
+.transition-all       { transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, opacity 0.25s ease; }
+.transition-colors    { transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+.transition-transform { transition: transform 0.25s ease; }
+
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s ease;
+  will-change: transform;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── macOS-style divider ────────────────────────────────────────────────────── */
+.macos-divider {
+  display: flex; align-items: center; gap: 0.875rem;
+  color: var(--color-accent);
+}
+.macos-divider::before, .macos-divider::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-secondary), transparent);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (min-width: 640px)  { .sm\:flex { display: flex; } }
+@media (min-width: 768px)  { .md\:flex { display: flex; } }
+@media (min-width: 1024px) { .lg\:flex { display: flex; } .hidden.lg\:block { display: block; } }
